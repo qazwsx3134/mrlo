@@ -49,7 +49,7 @@ export default component$<Props>((props) => {
                     <img
                       src={message.url}
                       alt=""
-                      class="inline-block w-7 h-7"
+                      class="inline-block w-7 h-7 px-[1px]"
                     />
                   </span>
                 );
