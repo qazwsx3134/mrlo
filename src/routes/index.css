@@ -1,0 +1,17 @@
+#bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.main {
+  position: absolute;
+  width: 100vw;
+  color: white;
+  z-index: 99;
+  margin: 0 auto;
+  padding: 120px 0;
+
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}

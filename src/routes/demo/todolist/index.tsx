@@ -22,6 +22,7 @@ export const useListLoader = routeLoader$(() => {
 export const useAddToListAction = routeAction$(
   (item) => {
     list.push(item);
+    console.log('list', list);
     return {
       success: true,
     };
@@ -56,7 +57,7 @@ export default component$(() => {
       </div>
 
       <div class="container container-center">
-        <Form action={action} spaReset>
+        <Form action={action} spaReset >
           <input type="text" name="text" required class={styles.input} />{' '}
           <button type="submit" class="button-dark">
             Add item
