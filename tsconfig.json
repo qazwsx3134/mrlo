@@ -18,7 +18,9 @@
     "noEmit": true,
     "types": ["node", "vite/client"],
     "paths": {
-      "~/*": ["./src/*"]
+      "~/*": ["./src/*"],
+      "images/*": ["./public/images/*"],
+      "audio/*": ["./public/audio/*"],
     }
   },
   "files": ["./.eslintrc.cjs"],

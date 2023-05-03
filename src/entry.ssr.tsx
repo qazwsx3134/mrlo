@@ -14,10 +14,15 @@ import { renderToStream, type RenderToStreamOptions } from '@builder.io/qwik/ser
 import { manifest } from '@qwik-client-manifest';
 import Root from './root';
 
+
+// This is for add subpath to the base url when deploying to github pages
+const baseUrl = process.env.NODE_ENV === 'static' ? '/qwik-tailwind-template/build/' : '/';
+
 export default function (opts: RenderToStreamOptions) {
   return renderToStream(<Root />, {
     manifest,
     ...opts,
+    base: baseUrl,
     // Use container attributes to set attributes on the html tag.
     containerAttributes: {
       lang: 'en-us',
