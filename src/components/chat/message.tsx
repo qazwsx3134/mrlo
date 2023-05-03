@@ -1,5 +1,5 @@
 import { component$ } from "@builder.io/qwik";
-import { chatMessage } from ".";
+import type { chatMessage } from ".";
 
 interface Props {
   chatMessages: chatMessage[];

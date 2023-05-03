@@ -1,7 +1,6 @@
-import { QRL, component$ } from "@builder.io/qwik";
+import { type QRL, component$ } from "@builder.io/qwik";
 
 import DropDown from "./dropDown";
-
 
 export enum MenuState {
   BadCustomer = "bad customer",

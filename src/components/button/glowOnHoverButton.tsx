@@ -1,4 +1,4 @@
-import { PropFunction, component$, useStylesScoped$ } from "@builder.io/qwik";
+import { type PropFunction, component$, useStylesScoped$ } from "@builder.io/qwik";
 import styles from "./glowOnHoverButton.css?inline";
 
 interface Props {

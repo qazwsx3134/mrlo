@@ -1,10 +1,4 @@
-import {
-  $,
-  type QRL,
-  component$,
-  useSignal,
-} from "@builder.io/qwik";
-import { Arrow } from "./starter/icons/arrow";
+import { $, type QRL, component$, useSignal } from "@builder.io/qwik";
 
 import type { MenuState } from "./menu";
 
@@ -39,9 +33,7 @@ export default component$<Props>((props) => {
             class={`w-4 h-4 ml-1 mt-1 ${
               isExpanded.value ? "-rotate-90" : "rotate-90"
             } transition-all duration-300 transform`}
-          >
-            <Arrow />
-          </div>
+          ></div>
         </div>
         {isExpanded.value && (
           <>
@@ -72,7 +64,6 @@ export default component$<Props>((props) => {
           </>
         )}
       </div>
-
     </div>
   );
 });

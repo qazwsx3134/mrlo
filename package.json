@@ -41,7 +41,6 @@
     "vite-tsconfig-paths": "4.2.0"
   },
   "dependencies": {
-    "@types/gsap": "^3.0.0",
     "@unpic/qwik": "^0.0.17",
     "cross-env": "^7.0.3",
     "dayjs": "^1.11.7",

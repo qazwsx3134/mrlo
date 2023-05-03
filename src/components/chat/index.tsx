@@ -1,13 +1,6 @@
-import {
-  component$,
-  useContext,
-  useSignal,
-  $,
-  useStore,
-  QwikIntrinsicElements,
-} from "@builder.io/qwik";
+import { component$, useSignal, $, useStore } from "@builder.io/qwik";
 
-import { appContext } from "~/routes/layout";
+// import { appContext } from "~/routes/layout";
 import { subtractFromNow } from "~/utils/dayjs";
 import { ArrowLeftLine } from "../icon/arrowLeftLine";
 
@@ -30,7 +23,7 @@ export type chatMessage = {
 };
 
 export default component$(() => {
-  const context = useContext(appContext);
+  // const context = useContext(appContext);
   const collapsed = useSignal(false);
   const chatList = useStore<chatMessage[]>(
     [
@@ -40,7 +33,7 @@ export default component$(() => {
         messages: [
           "Hello",
           {
-            url: "/images/lo-laugh.webp",
+            url: "./images/lo-laugh.webp",
           },
         ],
         time: subtractFromNow(3, "minute"),
@@ -51,7 +44,7 @@ export default component$(() => {
         messages: [
           "world",
           {
-            url: "/images/test.gif",
+            url: "./images/test.gif",
           },
         ],
         time: subtractFromNow(2, "minute"),
