@@ -1,0 +1,15 @@
+.containerMaxWidthSmall {
+  max-width: 60px
+}
+
+.containerMaxWidthLarge {
+  max-width: 240px
+}
+
+.jusitifyAround {
+  justify-content: space-around
+}
+
+.jusitifyBetween {
+  justify-content: space-between
+}

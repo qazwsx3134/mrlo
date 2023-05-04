@@ -1,14 +1,14 @@
-import { component$, $, useStore } from "@builder.io/qwik";
+import { component$, $, useSignal } from "@builder.io/qwik";
 
 // import { appContext } from "~/routes/layout";
-import Channels from "./channels";
-import { ArrowLeftLine } from "./icon/arrowLeftLine";
+import Channels from "../channels";
+import { ArrowLeftLine } from "../icon/arrowLeftLine";
+
+import styles from "./sideNav.module.css";
 
 export default component$(() => {
   // const context = useContext(appContext);
-  const collapsed = useStore({
-    value: false,
-  });
+  const collapsed = useSignal(false);
 
   const toggleCollapsed = $(() => {
     collapsed.value = !collapsed.value;
@@ -24,7 +24,9 @@ export default component$(() => {
         "bg-darkGray",
         "overflow-x-hidden",
         "overflow-y-auto",
-        collapsed.value ? "max-w-[60px]" : "max-w-[240px]",
+        collapsed.value
+          ? styles.containerMaxWidthSmall
+          : styles.containerMaxWidthLarge,
       ]}
       style={{
         height: "calc(100vh - 48px)",
@@ -36,7 +38,7 @@ export default component$(() => {
           "items-center",
           "px-2",
           "py-3",
-          collapsed.value ? "justify-around" : "justify-between",
+          collapsed.value ? styles.jusitifyAround : styles.jusitifyBetween,
         ]}
       >
         {!collapsed.value && <p class="text-lg font-semibold">為您特選</p>}
@@ -49,7 +51,7 @@ export default component$(() => {
           />
         </div>
       </div>
-      <Channels collapsed={collapsed.value} />
+      <Channels collapsed={collapsed} />
     </div>
   );
 });

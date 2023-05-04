@@ -18,7 +18,7 @@ import { manifest } from "@qwik-client-manifest";
 import Root from "./root";
 
 // This is for add subpath to the base url when deploying to github pages
-const baseUrl = process.env.NODE_ENV === "static" ? "/mrlo/build/" : "/";
+const baseUrl = process.env.NODE_ENV === "static" ? "/mrlo/build/" : "/build";
 
 export default function (opts: RenderToStreamOptions) {
   return renderToStream(<Root />, {

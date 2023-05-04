@@ -6,6 +6,8 @@ import { ArrowLeftLine } from "../icon/arrowLeftLine";
 
 import { GroupIcon } from "../icon/groupIcon";
 import InputIcon from "../icon/inputIcon";
+import { SmileIcon } from "../icon/smileIcon";
+import { TeddyBearIcon } from "../icon/teddyIcon";
 import Message from "./message";
 
 export type chatMessage = {
@@ -100,10 +102,6 @@ export default component$(() => {
             <div class="relative w-full h-full flex flex-col items-center justify-center">
               <div class="flex w-full">
                 <div class="flex-grow flex items-center bg-white rounded-md max-h-10 p-2 border border-gray-800 focus-within:border-purple focus-within:border-[3px]">
-                  <InputIcon size="md">
-                    <i q:slot="icon" class="fas fa-lightbulb"></i>
-                  </InputIcon>
-
                   <input
                     class="h-8 w-full grow shrink pl-2 text-[13px] focus:outline-none"
                     type="text"
@@ -113,7 +111,7 @@ export default component$(() => {
                     id=""
                   />
                   <InputIcon size="md">
-                    <i q:slot="icon" class="far fa-smile"></i>
+                    <SmileIcon q:slot="icon" class="text-xl stroke-[5px]" />
                   </InputIcon>
                 </div>
               </div>
@@ -121,7 +119,7 @@ export default component$(() => {
               <div class="flex items-center justify-between w-full h-full pl-[6px] pt-2">
                 <div class="flex items-center justify-between pr-2 rounded-md hover:bg-buttonHover cursor-pointer">
                   <InputIcon size="md">
-                    <i q:slot="icon" class="fas fa-ice-cream text-purple"></i>
+                    <TeddyBearIcon q:slot="icon" />
                   </InputIcon>
                   <span class="text-gray-500 text-sm font-semibold">100萬</span>
                 </div>

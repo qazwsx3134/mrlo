@@ -1,9 +1,10 @@
-import { component$ } from "@builder.io/qwik";
+import { component$, Signal } from "@builder.io/qwik";
 import { Link } from "@builder.io/qwik-city";
 import { readableNumber } from "~/utils/math";
+import styles from "./channel.module.css";
 
 interface Props {
-  collapsed?: boolean;
+  collapsed?: Signal<boolean>;
 }
 
 export default component$<Props>((props) => {
@@ -119,17 +120,27 @@ export default component$<Props>((props) => {
   ];
   return (
     <div role="group" class="flex flex-col">
-      {!props.collapsed && (
+      {!props.collapsed?.value && (
         <div class="text-sm font-semibold mx-2 mb-2">已追隨的頻道</div>
       )}
       <div class="flex flex-col">
         {channels.map((channel) => (
-          <div key={`${channel.streamUrl}`} class="py-2 flex hover:bg-buttonHover">
+          <div
+            key={`${channel.streamUrl}`}
+            class="py-2 flex hover:bg-buttonHover"
+          >
             <Link
               href={channel.streamUrl}
-              class={`no-underline flex items-center justify-start shrink ${
-                props.collapsed ? "max-w-[50px]" : "max-w-[225px]"
-              }`}
+              class={[
+                "no-underline",
+                "flex",
+                "items-center",
+                "justify-start",
+                "shrink",
+                props.collapsed?.value
+                  ? styles.maxWidth50px
+                  : styles.maxWidth225px,
+              ]}
             >
               {/* channel icon */}
               <div class="channel-icon flex shrink-0 w-[30px] h-[30px] ml-2">
@@ -142,7 +153,7 @@ export default component$<Props>((props) => {
                 </figure>
               </div>
               {/* title and viewer count */}
-              {!props.collapsed && (
+              {!props.collapsed?.value && (
                 <div class="flex justify-between shrink min-w-0">
                   <div class="pl-2 flex shrink w-full">
                     <div class="overflow-hidden">

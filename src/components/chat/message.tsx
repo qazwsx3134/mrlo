@@ -50,6 +50,7 @@ export default component$<Props>((props) => {
                       src={message.url}
                       alt=""
                       class="inline-block w-7 h-7 px-[1px]"
+                      loading="lazy"
                     />
                   </span>
                 );

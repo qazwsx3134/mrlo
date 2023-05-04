@@ -1,0 +1,13 @@
+.border {
+  border: 1px solid #F7F7F8;
+}
+
+.border::after {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  right: -15px;
+  bottom: -15px;
+  border: 1px solid black;
+}

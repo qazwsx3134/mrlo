@@ -1,5 +1,6 @@
 import { component$, useStylesScoped$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
+import InfoFooter from "~/components/infoFooter";
 import styles from "./index.css?inline";
 
 export default component$(() => {
@@ -15,7 +16,7 @@ export default component$(() => {
       >
         cc
       </div>
-      <div class="w-full grow shrink-0 basis-28 bg-purple z-10"></div>
+      <InfoFooter />
     </div>
   );
 });
