@@ -19,19 +19,19 @@ export default component$(() => {
             <div class="flex items-center">
               <Link href="/">
                 <div class="p-2 inline-flex">
-                  <TwitchIcon class="text-purple" />
+                  <TwitchIcon class="text-orange-500" />
                 </div>
               </Link>
 
               <button
                 type="button"
-                class="lg:p-3 md:p-1 mx-1 hover:text-purple"
+                class="lg:p-3 md:p-1 mx-1 hover:text-orange-500"
               >
                 <p class="text-lg font-semibold">追隨中</p>
               </button>
               <button
                 type="button"
-                class="lg:p-3 md:p-1 mx-1 hover:text-purple"
+                class="lg:p-3 md:p-1 mx-1 hover:text-orange-500"
               >
                 <p class="text-lg font-semibold">瀏覽</p>
               </button>
@@ -71,7 +71,7 @@ export default component$(() => {
               </button>
               <button
                 type="button"
-                class="py-2 px-3 bg-purpleHover hover:bg-purple text-white font-medium text-sm rounded-md mr-2"
+                class="py-2 px-3 bg-orange-500 hover:bg-orange-700 text-white font-medium text-sm rounded-md mr-2"
               >
                 註冊
               </button>

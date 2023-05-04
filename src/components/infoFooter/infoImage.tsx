@@ -1,6 +1,5 @@
 import { component$ } from "@builder.io/qwik";
 
-
 export default component$(() => {
   return (
     <div id="infoImage" class="pl-2 mr-2">
@@ -17,7 +16,7 @@ export default component$(() => {
             "border-white",
             "outline",
             "outline-[3px]",
-            "outline-red-600",
+            "outline-orange-500",
             "hover:outline-4",
           ]}
           src="https://static-cdn.jtvnw.net/jtv_user_pictures/f201e2b1-6afb-4efb-ae5a-a38e8b8860e8-profile_image-70x70.png"

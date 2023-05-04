@@ -101,7 +101,7 @@ export default component$(() => {
             {/* input */}
             <div class="relative w-full h-full flex flex-col items-center justify-center">
               <div class="flex w-full">
-                <div class="flex-grow flex items-center bg-white rounded-md max-h-10 p-2 border border-gray-800 focus-within:border-purple focus-within:border-[3px]">
+                <div class="flex-grow flex items-center bg-white rounded-md max-h-10 p-2 border border-gray-800 focus-within:border-orange-500 focus-within:border-[3px]">
                   <input
                     class="h-8 w-full grow shrink pl-2 text-[13px] focus:outline-none"
                     type="text"
@@ -125,7 +125,7 @@ export default component$(() => {
                 </div>
                 <button
                   type="button"
-                  class="py-2 px-2 bg-purpleHover hover:bg-purple text-white font-semibold text-xs rounded-md"
+                  class="py-2 px-2 bg-orange-500 hover:bg-orange-700 text-white font-semibold text-xs rounded-md"
                 >
                   聊天
                 </button>
