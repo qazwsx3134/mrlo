@@ -1,0 +1,1 @@
+import{p as t,z as o,_ as p,b as a}from"./q-4bb962da.js";const e=a("app.context"),s=t(o(()=>p(()=>import("./q-b36a36e9.js"),["build/q-b36a36e9.js","build/q-4bb962da.js"]),"s_VkLNXphUh5s"));export{e as appContext,s as default};
