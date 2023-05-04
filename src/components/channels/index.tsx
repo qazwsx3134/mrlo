@@ -1,4 +1,4 @@
-import { component$, Signal } from "@builder.io/qwik";
+import { component$, type Signal } from "@builder.io/qwik";
 import { Link } from "@builder.io/qwik-city";
 import { readableNumber } from "~/utils/math";
 import styles from "./channel.module.css";

@@ -1,4 +1,4 @@
-import { $, component$ } from "@builder.io/qwik";
+import { component$ } from "@builder.io/qwik";
 import { CertificateIcon } from "../icon/certificatIcon";
 import InfoImage from "./infoImage";
 import { GreetIcon } from "../icon/greetIcon";
@@ -18,23 +18,23 @@ export default component$(() => {
               <CertificateIcon class="text-orange-500 text-base ml-1" />
             </span>
           </div>
-          <div class="flex grow shrink w-full justify-end gap-1">
+          <div class="flex grow shrink w-full justify-end gap-2">
             <button
               type="button"
-              class="flex items-center justify-center px-1 py-2 rounded text-orange-500 hover:text-orange-700 hover:bg-buttonHover"
+              class="flex items-center justify-center px-1 py-[6px] rounded text-orange-500 hover:text-orange-700 hover:bg-buttonHover"
             >
               <GreetIcon class="text-2xl ml-1" />
               <span class="text-sm font-semibold">反應</span>
             </button>
             <button
               type="button"
-              class="flex items-center justify-center px-1 py-2 rounded text-gray-900 bg-buttonHover hover:text-orange-500 hover:bg-gray-300"
+              class="flex items-center justify-center px-1 py-[6px] rounded text-gray-900 bg-buttonHover hover:text-orange-500 hover:bg-gray-300"
             >
               <HeartIcon variant="empty" class="text-2xl ml-1" />
             </button>
             <button
               type="button"
-              class="flex items-start justify-center px-2 py-2 rounded text-white bg-orange-500 hover:text-white hover:bg-orange-600"
+              class="flex items-start justify-center px-2 py-[6px] rounded text-white bg-orange-500 hover:text-white hover:bg-orange-600"
               onClick$={useConfetti}
             >
               <StarIcon class="text-2xl ml-1" />
