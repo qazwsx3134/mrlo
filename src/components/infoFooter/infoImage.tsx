@@ -1,4 +1,5 @@
 import { component$ } from "@builder.io/qwik";
+import Tag from "~/components/tag";
 
 export default component$(() => {
   return (
@@ -23,8 +24,14 @@ export default component$(() => {
           alt=""
           loading="lazy"
         />
-        <div class="absolute z-20 -bottom-3 bg-red-600 px-1 py-[1px] rounded-md text-sm text-white font-medium tracking-wide">
-          LIVE
+        <div class="absolute z-20 -bottom-3 mx-1 py-[1px]">
+          <Tag>
+            <span
+              class={["text-sm", "text-white", "font-medium", "tracking-wide"]}
+            >
+              LIVE
+            </span>
+          </Tag>
         </div>
       </div>
     </div>

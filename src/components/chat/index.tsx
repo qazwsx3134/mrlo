@@ -1,4 +1,10 @@
-import { component$, useSignal, $, useStore } from "@builder.io/qwik";
+import {
+  component$,
+  useSignal,
+  $,
+  useStore,
+  QwikKeyboardEvent,
+} from "@builder.io/qwik";
 
 // import { appContext } from "~/routes/layout";
 import { subtractFromNow } from "~/utils/dayjs";
@@ -27,36 +33,78 @@ export type chatMessage = {
 export default component$(() => {
   // const context = useContext(appContext);
   const collapsed = useSignal(false);
-  const chatList = useStore<chatMessage[]>(
-    [
-      {
-        name: "MrLo",
-        color: "text-orange-500",
-        messages: [
-          "Hello",
-          {
-            url: "./images/lo-laugh.webp",
-          },
-        ],
-        time: subtractFromNow(3, "minute"),
-      },
-      {
-        name: "MrLo",
-        color: "text-orange-500",
-        messages: [
-          "world",
-          {
-            url: "./images/test.gif",
-          },
-        ],
-        time: subtractFromNow(2, "minute"),
-      },
-    ],
+  const inputText = useStore<{
+    value: (
+      | string
+      | {
+          url: string;
+        }
+    )[];
+  }>(
+    {
+      value: [
+        "Hello",
+        {
+          url: "./images/lo-laugh.webp",
+        },
+      ],
+    },
+    { deep: true }
+  );
+
+  const chatList = useStore<{ value: chatMessage[] }>(
+    {
+      value: [
+        {
+          name: "MrLo",
+          color: "text-orange-500",
+          messages: [
+            "Hello",
+            {
+              url: "./images/lo-laugh.webp",
+            },
+          ],
+          time: subtractFromNow(3, "minute"),
+        },
+        {
+          name: "MrLo",
+          color: "text-orange-500",
+          messages: [
+            "world",
+            {
+              url: "./images/test.gif",
+            },
+          ],
+          time: subtractFromNow(2, "minute"),
+        },
+      ],
+    },
     { deep: true }
   );
 
   const toggleCollapsed = $(() => {
     collapsed.value = !collapsed.value;
+  });
+
+  const onInput = $((event: Event,element: HTMLSpanElement) => {
+    // const target = event.target as HTMLInputElement;
+    // inputText.value = target.value;
+    console.log(event);
+    console.log(element);
+  });
+
+  const inputOnEnter = $((event: QwikKeyboardEvent<HTMLInputElement>) => {
+    if (inputText.value.length > 0 && event.key === "Enter") {
+      //   chatList.value = [
+      //     ...chatList.value,
+      //     {
+      //       name: "周大開",
+      //       color: "text-blue-500",
+      //       messages: ["test"],
+      //       time: subtractFromNow(1, "minute"),
+      //     },
+      //   ];
+    }
   });
 
   return (
@@ -93,7 +141,7 @@ export default component$(() => {
           >
             {/* CHAT */}
             <div class="flex flex-col w-full h-full my-2">
-              <Message chatMessages={chatList} />
+              <Message chatMessages={chatList.value} />
             </div>
           </section>
           {/* INPUT CONTAINER*/}
@@ -102,14 +150,33 @@ export default component$(() => {
             <div class="relative w-full h-full flex flex-col items-center justify-center">
               <div class="flex w-full">
                 <div class="flex-grow flex items-center bg-white rounded-md max-h-10 p-2 border border-gray-800 focus-within:border-orange-500 focus-within:border-[3px]">
-                  <input
+                  {/* <input
                     class="h-8 w-full grow shrink pl-2 text-[13px] focus:outline-none"
                     type="text"
                     name="search"
+                    bind:value={inputText}
                     placeholder="傳送訊息"
                     autoComplete="off"
                     id=""
-                  />
+                    onKeyDown$={inputOnEnter}
+                  /> */}
+                  <div class="inputWrapper flex w-full ">
+                    <span
+                      contentEditable="true"
+                      onInput$={onInput}
+                      class="h-8 w-full flex grow items-center justify-start shrink pl-2 text-sm focus:outline-none"
+                    >
+                      {inputText.value.map((item) => {
+                        if (typeof item === "string") {
+                          return <span>{item}</span>;
+                        } else {
+                          return <img src={item.url} alt="" class="h-8 w-8" />;
+                        }
+                      })}
+                      <span>cc</span>
+                      <span>bb</span>
+                    </span>
+                  </div>
                   <InputIcon size="md">
                     <SmileIcon q:slot="icon" class="text-xl stroke-[5px]" />
                   </InputIcon>

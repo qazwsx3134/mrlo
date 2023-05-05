@@ -5,19 +5,26 @@ import { GreetIcon } from "../icon/greetIcon";
 import { HeartIcon } from "../icon/heartIcon";
 import { StarIcon } from "../icon/starFilledIcon";
 import useConfetti from "~/hooks/useConfetti";
+import Tag from "../tag";
+import Clock from "~/components/clock";
+import { PeoplePlusIcon } from "../icon/peoplePlus";
 
 export default component$(() => {
   return (
     <div class="flex w-full grow shrink-0 basis-28 bg-lightGray z-10 p-2">
       <InfoImage />
-      <div class="flex w-full flex-col items-base justify-between">
+      <div class="flex w-full flex-col items-base justify-start">
         <div class="flex items-base justify-between w-full">
+          {/* 1 row Left */}
           <div class="flex items-center shrink-0">
+            {/* Name */}
             <span class="text-lg font-semibold text-gray-900">MrLo_tw</span>
+            {/* Certification */}
             <span>
               <CertificateIcon class="text-orange-500 text-base ml-1" />
             </span>
           </div>
+          {/* 1 row Right */}
           <div class="flex grow shrink w-full justify-end gap-2">
             <button
               type="button"
@@ -42,8 +49,40 @@ export default component$(() => {
             </button>
           </div>
         </div>
-        <div></div>
-        <div></div>
+        {/* 2 row */}
+        <div class="flex items-base justify-between w-full">
+          <div>
+            <div class="font-semibold text-sm">
+              【MrLo】我必須立馬畫圖 | 到年底前缺工一天都不行
+            </div>
+            <div class="flex mt-1 items-center justify-start">
+              <div class="text-purple-600 mr-2">Test2</div>
+              <div class="flex gap-1">
+                <Tag color="lightGray">
+                  <span>繪圖</span>
+                </Tag>
+                <Tag color="lightGray">
+                  <span>熬夜</span>
+                </Tag>
+                <Tag color="lightGray">
+                  <span>爆肝</span>
+                </Tag>
+                <Tag color="lightGray">
+                  <span>打遊戲</span>
+                </Tag>
+              </div>
+            </div>
+          </div>
+          <div class="flex p-1 mt-1 gap-2 justify-end items-start">
+            <span>
+              <PeoplePlusIcon class="text-red-700 text-2xl stroke-[4px]" />
+            </span>
+            <span class="text-lg text-red-700 flex items-center">999</span>
+            <span class="text-lg text-gray-700 flex items-center">
+              <Clock />
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   );
