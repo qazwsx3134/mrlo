@@ -1,10 +1,4 @@
-import {
-  component$,
-  useSignal,
-  $,
-  useStore,
-  QwikKeyboardEvent,
-} from "@builder.io/qwik";
+import { component$, useSignal, $, useStore } from "@builder.io/qwik";
 
 // import { appContext } from "~/routes/layout";
 import { subtractFromNow } from "~/utils/dayjs";
@@ -86,26 +80,26 @@ export default component$(() => {
     collapsed.value = !collapsed.value;
   });
 
-  const onInput = $((event: Event,element: HTMLSpanElement) => {
+  const onInput = $((event: Event, element: HTMLSpanElement) => {
     // const target = event.target as HTMLInputElement;
     // inputText.value = target.value;
     console.log(event);
     console.log(element);
   });
 
-  const inputOnEnter = $((event: QwikKeyboardEvent<HTMLInputElement>) => {
-    if (inputText.value.length > 0 && event.key === "Enter") {
-      //   chatList.value = [
-      //     ...chatList.value,
-      //     {
-      //       name: "周大開",
-      //       color: "text-blue-500",
-      //       messages: ["test"],
-      //       time: subtractFromNow(1, "minute"),
-      //     },
-      //   ];
-    }
-  });
+  // const inputOnEnter = $((event: QwikKeyboardEvent<HTMLInputElement>) => {
+  //   if (inputText.value.length > 0 && event.key === "Enter") {
+  //   chatList.value = [
+  //     ...chatList.value,
+  //     {
+  //       name: "周大開",
+  //       color: "text-blue-500",
+  //       messages: ["test"],
+  //       time: subtractFromNow(1, "minute"),
+  //     },
+  //   ];
+  //   }
+  // });
 
   return (
     <>

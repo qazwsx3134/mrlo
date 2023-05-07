@@ -75,10 +75,10 @@ export default component$(() => {
           </div>
           <div class="flex p-1 mt-1 gap-2 justify-end items-start">
             <span>
-              <PeoplePlusIcon class="text-red-700 text-2xl stroke-[4px]" />
+              <PeoplePlusIcon class="text-red-700 text-xl stroke-[4px]" />
             </span>
-            <span class="text-lg text-red-700 flex items-center">999</span>
-            <span class="text-lg text-gray-700 flex items-center">
+            <span class="text-sm text-red-700 flex items-center">999</span>
+            <span class="text-sm text-gray-700 flex items-center">
               <Clock />
             </span>
           </div>

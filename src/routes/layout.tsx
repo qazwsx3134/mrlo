@@ -27,7 +27,12 @@ export default component$(() => {
     <>
       <main class="flex flex-col h-full min-h-screen">
         <Header />
-        <div class="fixed top-12 w-full flex flex-row justify-between">
+        <div
+          class="fixed top-12 w-full flex flex-row justify-between"
+          style={{
+            height: "calc(100vh - 48px)",
+          }}
+        >
           {/* left */}
           <div class="flex basis-[60px]">
             <SideNav />
