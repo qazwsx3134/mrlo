@@ -69,3 +69,6 @@ npm run build # or `yarn build`
 ```
 npm run build.server
 ```
+## dotenv
+
+If you want to deploy static page make sure you have .env

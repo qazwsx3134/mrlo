@@ -16,9 +16,14 @@ import {
 } from "@builder.io/qwik/server";
 import { manifest } from "@qwik-client-manifest";
 import Root from "./root";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 // This is for add subpath to the base url when deploying to github pages
-const baseUrl = process.env.NODE_ENV === "static" ? "/mrlo/build/" : "/build";
+const baseUrl = process.env.REPOSITORY_NAME
+  ? `/${process.env.REPOSITORY_NAME}/build/`
+  : "/build";
 
 export default function (opts: RenderToStreamOptions) {
   return renderToStream(<Root />, {

@@ -12,7 +12,7 @@
     "build.server": "vite build -c adapters/static/vite.config.ts",
     "build.types": "tsc --incremental --noEmit",
     "deploy": "echo 'Run \"npm run qwik add\" to install a server adapter'",
-    "deploy:static": "cross-env NODE_ENV=static qwik build && gh-pages -d dist",
+    "deploy:static": "qwik build && gh-pages -d dist",
     "dev": "vite --mode ssr",
     "dev.debug": "node --inspect-brk ./node_modules/vite/bin/vite.js --mode ssr --force",
     "fmt": "prettier --write .",
@@ -44,6 +44,7 @@
     "@unpic/qwik": "^0.0.17",
     "cross-env": "^7.0.3",
     "dayjs": "^1.11.7",
+    "dotenv": "^16.0.3",
     "gh-pages": "^5.0.0",
     "gsap": "^3.11.5"
   }
