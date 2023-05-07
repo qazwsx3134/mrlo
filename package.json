@@ -41,11 +41,13 @@
     "vite-tsconfig-paths": "4.2.0"
   },
   "dependencies": {
+    "@types/uuid": "^9.0.1",
     "@unpic/qwik": "^0.0.17",
     "cross-env": "^7.0.3",
     "dayjs": "^1.11.7",
     "dotenv": "^16.0.3",
     "gh-pages": "^5.0.0",
-    "gsap": "^3.11.5"
+    "gsap": "^3.11.5",
+    "uuid": "^9.0.0"
   }
 }

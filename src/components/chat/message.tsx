@@ -1,8 +1,8 @@
 import { component$ } from "@builder.io/qwik";
-import type { chatMessage } from ".";
+import type { ChatMessage } from ".";
 
 interface Props {
-  chatMessages: chatMessage[];
+  chatMessages: ChatMessage[];
 }
 
 export default component$<Props>((props) => {
@@ -13,7 +13,10 @@ export default component$<Props>((props) => {
   return (
     <>
       {props.chatMessages.map((chat) => (
-        <div key={`${chat.time}${chat.name}`} class="px-5 py-1 inline-block">
+        <div
+          key={`${chat.id}${chat.time}${chat.name}`}
+          class="px-5 py-1 inline-block"
+        >
           {chat.time && (
             <span class="mr-1 text-xs font-normal text-gray-700">
               {chat.time}
@@ -45,7 +48,7 @@ export default component$<Props>((props) => {
               }
               if (typeof message === "object") {
                 return (
-                  <span key={`${chat.time}${chat.name}${message.url}`}>
+                  <span key={message.id}>
                     <img
                       src={message.url}
                       alt=""
