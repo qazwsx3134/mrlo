@@ -9,6 +9,7 @@ import { GroupIcon } from "../icon/groupIcon";
 
 import Message from "./message";
 import ChatInput from "./chatInput";
+import { useLocation } from "@builder.io/qwik-city";
 
 export type MessageType = string | { id: string; url: string };
 
@@ -23,6 +24,7 @@ export type ChatMessage = {
 
 export default component$(() => {
   // const context = useContext(appContext);
+  const location = useLocation();
 
   const collapsed = useSignal(false);
   const inputText = useStore<{
@@ -44,7 +46,7 @@ export default component$(() => {
             "Hello",
             {
               id: uuidv4(),
-              url: "./images/lo-laugh.webp",
+              url: `${location.url.origin}/images/emojis/mrlo/lo-laugh.webp`,
             },
           ],
           time: subtractFromNow(3, "minute"),
@@ -56,7 +58,7 @@ export default component$(() => {
             "world",
             {
               id: uuidv4(),
-              url: "./images/test.gif",
+              url: `${location.url.origin}/images/emojis/test/test.gif`,
             },
           ],
           time: subtractFromNow(2, "minute"),

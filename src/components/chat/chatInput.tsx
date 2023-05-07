@@ -9,6 +9,7 @@ import { SmileIcon } from "../icon/smileIcon";
 import { TeddyBearIcon } from "../icon/teddyIcon";
 import { ChatMessage, MessageType } from ".";
 import { v4 as uuidv4 } from "uuid";
+import IconDialog from "./iconDialog";
 
 interface Props {
   inputText: {
@@ -20,19 +21,21 @@ interface Props {
 }
 export default component$<Props>((props) => {
   const editorRef = useSignal<HTMLElement>();
+  const modalRef = useSignal<HTMLDialogElement>();
 
   const onIconClick = $(() => {
-    if (editorRef.value) {
-      const id = uuidv4();
-      editorRef.value.innerHTML += `<img id=${id} src="./images/lo-laugh.webp" alt="" class="h-8 w-8" />`;
-      props.inputText.value = [
-        ...props.inputText.value,
-        {
-          id,
-          url: "./images/lo-laugh.webp",
-        },
-      ];
-    }
+    modalRef.value?.show();
+    // if (editorRef.value) {
+    //   const id = uuidv4();
+    //   editorRef.value.innerHTML += `<img id=${id} src="./images/lo-laugh.webp" alt="" class="h-8 w-8" />`;
+    //   props.inputText.value = [
+    //     ...props.inputText.value,
+    //     {
+    //       id,
+    //       url: "./images/lo-laugh.webp",
+    //     },
+    //   ];
+    // }
   });
 
   const onKeyUp = $(
@@ -100,6 +103,7 @@ export default component$<Props>((props) => {
   });
   return (
     <div class="relative w-full h-full flex flex-col items-center justify-center">
+      <IconDialog modalRef={modalRef} />
       <div class="flex w-full">
         <div class="flex-grow flex items-center bg-white rounded-md max-h-10 p-2 border border-gray-800 focus-within:border-orange-500 focus-within:border-[3px]">
           <div class="inputWrapper flex w-full ">
@@ -110,7 +114,7 @@ export default component$<Props>((props) => {
               class="h-8 w-full flex grow items-center justify-start shrink pl-2 text-sm focus:outline-none"
             ></span>
           </div>
-          <div onClick$={onIconClick}>
+          <div id="iconDialogOpen" onClick$={onIconClick}>
             <InputIcon size="md">
               <SmileIcon q:slot="icon" class="text-xl stroke-[5px]" />
             </InputIcon>

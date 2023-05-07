@@ -3,6 +3,7 @@
 /lib
 /lib-types
 /server
+/scripts/*.js
 
 # Development
 node_modules

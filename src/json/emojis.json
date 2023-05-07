@@ -1,0 +1,7 @@
+{
+  "mrlo": [
+    "./images/emojis/mrlo/lo-laugh.webp",
+    "./images/emojis/mrlo/vanish.gif"
+  ],
+  "test": ["./images/emojis/test/test.gif"]
+}

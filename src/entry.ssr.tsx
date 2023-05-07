@@ -21,9 +21,10 @@ import dotenv from "dotenv";
 dotenv.config();
 
 // This is for add subpath to the base url when deploying to github pages
-const baseUrl = process.env.REPOSITORY_NAME
-  ? `/${process.env.REPOSITORY_NAME}/build/`
-  : "/build";
+const baseUrl =
+  process.env.DEPLOY_ENV === "static"
+    ? `/${process.env.REPOSITORY_NAME}/build/`
+    : "/build";
 
 export default function (opts: RenderToStreamOptions) {
   return renderToStream(<Root />, {
