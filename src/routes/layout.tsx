@@ -42,9 +42,9 @@ export default component$(() => {
   return (
     <>
       <main id="main" class="flex flex-col h-full min-h-screen">
-        <SquareBGLoader onDone={onDone}>
+        {/* <SquareBGLoader onDone={onDone}>
           <MrloHello q:slot="icon" onDone={onDone} />
-        </SquareBGLoader>
+        </SquareBGLoader> */}
         <Header />
         <div
           class="fixed top-12 w-full flex flex-row justify-between"

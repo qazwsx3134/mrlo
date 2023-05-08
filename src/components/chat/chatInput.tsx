@@ -2,6 +2,8 @@ import {
   component$,
   useSignal,
   $,
+  useVisibleTask$,
+  QwikMouseEvent,
   type QwikKeyboardEvent,
 } from "@builder.io/qwik";
 import InputIcon from "../icon/inputIcon";
@@ -10,6 +12,8 @@ import { TeddyBearIcon } from "../icon/teddyIcon";
 import { ChatMessage, MessageType } from ".";
 import { v4 as uuidv4 } from "uuid";
 import IconDialog from "./iconDialog";
+import { CrownIcon } from "../icon/crownIcon";
+import Moderator from "../icon/moderator";
 
 interface Props {
   inputText: {
@@ -22,20 +26,33 @@ interface Props {
 export default component$<Props>((props) => {
   const editorRef = useSignal<HTMLElement>();
   const modalRef = useSignal<HTMLDialogElement>();
-
-  const onIconClick = $(() => {
+  useVisibleTask$(() => {
     modalRef.value?.show();
-    // if (editorRef.value) {
-    //   const id = uuidv4();
-    //   editorRef.value.innerHTML += `<img id=${id} src="./images/lo-laugh.webp" alt="" class="h-8 w-8" />`;
-    //   props.inputText.value = [
-    //     ...props.inputText.value,
-    //     {
-    //       id,
-    //       url: "./images/lo-laugh.webp",
-    //     },
-    //   ];
-    // }
+  });
+
+  const onIconClick$ = $(
+    (
+      event: QwikMouseEvent<HTMLButtonElement, MouseEvent>,
+      element: HTMLButtonElement
+    ) => {
+      if (editorRef.value) {
+        const id = uuidv4();
+
+        const src = element.children?.[0].getAttribute("src") ?? undefined;
+        editorRef.value.innerHTML += `<img id=${id} src=${src} alt="" class="h-7 w-7" />`;
+        props.inputText.value = [
+          ...props.inputText.value,
+          {
+            id,
+            url: src,
+          },
+        ];
+      }
+    }
+  );
+
+  const onDialogClick = $(() => {
+    modalRef.value?.show();
   });
 
   const onKeyUp = $(
@@ -65,6 +82,7 @@ export default component$<Props>((props) => {
       });
 
       if (event.key === "Enter") {
+        console.log(props.inputText.value);
         props.chatList.value = [
           ...props.chatList.value,
           {
@@ -72,7 +90,7 @@ export default component$<Props>((props) => {
             name: "周大開",
             color: "text-gray-500",
             messages: props.inputText.value,
-            time: "now",
+            icons: [<Moderator />],
           },
         ];
         props.inputText.value = [];
@@ -85,14 +103,15 @@ export default component$<Props>((props) => {
 
   const onClickToChat = $(() => {
     if (props.inputText.value.length >= 1) {
+      console.log(props.inputText.value);
       props.chatList.value = [
         ...props.chatList.value,
         {
           id: uuidv4(),
-          name: "周大開",
+          name: "周大開 (Anonymous) ",
           color: "text-gray-500",
           messages: props.inputText.value,
-          time: "now",
+          icons: [<Moderator />],
         },
       ];
       props.inputText.value = [];
@@ -103,10 +122,10 @@ export default component$<Props>((props) => {
   });
   return (
     <div class="relative w-full h-full flex flex-col items-center justify-center">
-      <IconDialog modalRef={modalRef} />
+      <IconDialog modalRef={modalRef} onIconClick$={onIconClick$} />
       <div class="flex w-full">
         <div class="flex-grow flex items-center bg-white rounded-md max-h-10 p-2 border border-gray-800 focus-within:border-orange-500 focus-within:border-[3px]">
-          <div class="inputWrapper flex w-full ">
+          <div class="inputWrapper flex w-full items-center">
             <span
               ref={editorRef}
               contentEditable="true"
@@ -114,7 +133,7 @@ export default component$<Props>((props) => {
               class="h-8 w-full flex grow items-center justify-start shrink pl-2 text-sm focus:outline-none"
             ></span>
           </div>
-          <div id="iconDialogOpen" onClick$={onIconClick}>
+          <div id="iconDialogOpen" onClick$={onDialogClick}>
             <InputIcon size="md">
               <SmileIcon q:slot="icon" class="text-xl stroke-[5px]" />
             </InputIcon>

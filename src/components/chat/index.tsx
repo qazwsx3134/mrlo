@@ -9,9 +9,11 @@ import { GroupIcon } from "../icon/groupIcon";
 
 import Message from "./message";
 import ChatInput from "./chatInput";
+import { JSX } from "@builder.io/qwik/jsx-runtime";
+import Moderator from "../icon/moderator";
 // import { useLocation } from "@builder.io/qwik-city";
 
-export type MessageType = string | { id: string; url: string };
+export type MessageType = string | { id: string; url?: string };
 
 export type ChatMessage = {
   id?: string;
@@ -19,8 +21,54 @@ export type ChatMessage = {
   messages: MessageType[];
   color?: string;
   time?: string;
-  icons?: string[];
+  icons?: JSX.Element[];
 };
+
+const defaultChatMessage: ChatMessage[] = [
+  {
+    name: "MrLo",
+    color: "text-red-500",
+    messages: [
+      "Hello",
+      {
+        id: uuidv4(),
+        url: `/images/emojis/mrlo/lo-laugh.webp`,
+      },
+    ],
+    icons: [<Moderator />],
+    time: subtractFromNow(3, "minute"),
+  },
+  {
+    name: "MrLo",
+    color: "text-red-500",
+    messages: [
+      "world",
+      {
+        id: uuidv4(),
+        url: `/images/emojis/test/test.gif`,
+      },
+    ],
+    icons: [<Moderator />],
+    time: subtractFromNow(2, "minute"),
+  },
+  {
+    name: "MrLo",
+    color: "text-red-500",
+    messages: [
+      "worldasdasdasdasdasdasdasd",
+      {
+        id: uuidv4(),
+        url: `/images/emojis/test/test.gif`,
+      },
+      {
+        id: uuidv4(),
+        url: `/images/emojis/test/test.gif`,
+      },
+    ],
+    icons: [<Moderator />],
+    time: subtractFromNow(2, "minute"),
+  },
+];
 
 export default component$(() => {
   // const context = useContext(appContext);
@@ -38,32 +86,7 @@ export default component$(() => {
 
   const chatList = useStore<{ value: ChatMessage[] }>(
     {
-      value: [
-        {
-          name: "MrLo",
-          color: "text-orange-500",
-          messages: [
-            "Hello",
-            {
-              id: uuidv4(),
-              url: `/images/emojis/mrlo/lo-laugh.webp`,
-            },
-          ],
-          time: subtractFromNow(3, "minute"),
-        },
-        {
-          name: "MrLo",
-          color: "text-orange-500",
-          messages: [
-            "world",
-            {
-              id: uuidv4(),
-              url: `/images/emojis/test/test.gif`,
-            },
-          ],
-          time: subtractFromNow(2, "minute"),
-        },
-      ],
+      value: defaultChatMessage,
     },
     { deep: true }
   );
