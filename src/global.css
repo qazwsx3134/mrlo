@@ -121,3 +121,9 @@ code {
 *::-ms-scrollbar-track {
   background-color: #f0f0f0;
 }
+
+/* For GSDevtools */
+
+.gs-dev-tools {
+  z-index: 999;
+}

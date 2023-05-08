@@ -1,10 +1,18 @@
-import { component$, Slot, useStore } from "@builder.io/qwik";
-
+import {
+  component$,
+  Slot,
+  useStore,
+  useSignal,
+  useVisibleTask$,
+} from "@builder.io/qwik";
 import { useContextProvider, createContextId } from "@builder.io/qwik";
+import imagesLoaded from "imagesloaded";
 
+import SquareBGLoader from "~/components/loader/background/squareBGLoader";
 import Chat from "~/components/chat";
 import Header from "~/components/header";
 import SideNav from "~/components/sideNav";
+import MrloHello from "~/components/loader/LoaderIcon/mrloHello";
 
 interface AppContext {
   theme: "light" | "dark";
@@ -22,10 +30,21 @@ export default component$(() => {
   useContextProvider(appContext, context);
 
   // close cart modal function
+  const onDone = useSignal(false);
+
+  useVisibleTask$(() => {
+    const imgLoad = imagesLoaded("#main", { background: true });
+    imgLoad.on("done", () => {
+      onDone.value = true;
+    });
+  });
 
   return (
     <>
-      <main class="flex flex-col h-full min-h-screen">
+      <main id="main" class="flex flex-col h-full min-h-screen">
+        <SquareBGLoader onDone={onDone}>
+          <MrloHello q:slot="icon" onDone={onDone} />
+        </SquareBGLoader>
         <Header />
         <div
           class="fixed top-12 w-full flex flex-row justify-between"

@@ -5,6 +5,9 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig(() => {
   return {
+    optimizeDeps: {
+      include: ['gsap', 'gsap/dist/gsap', 'gsap/dist/ScrollTrigger', 'gsap/dist/ScrollToPlugin', 'uuid'],
+    },
     plugins: [qwikCity(), qwikVite(), tsconfigPaths()],
     preview: {
       headers: {

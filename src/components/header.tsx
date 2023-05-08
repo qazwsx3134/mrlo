@@ -11,7 +11,7 @@ export default component$(() => {
   // const context = useContext(appContext);
 
   return (
-    <header class="fixed w-full z-50">
+    <header class="fixed w-full z-40">
       <nav class="z-50 h-12 block bg-gray-100 shadow-sm ">
         <div class="flex flex-nowrap h-full bg-white">
           {/* Left */}
