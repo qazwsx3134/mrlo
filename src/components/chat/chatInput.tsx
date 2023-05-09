@@ -2,18 +2,15 @@ import {
   component$,
   useSignal,
   $,
-  useVisibleTask$,
-  QwikMouseEvent,
+  type QwikMouseEvent,
   type QwikKeyboardEvent,
 } from "@builder.io/qwik";
 import InputIcon from "../icon/inputIcon";
 import { SmileIcon } from "../icon/smileIcon";
 import { TeddyBearIcon } from "../icon/teddyIcon";
-import { ChatMessage, MessageType } from ".";
+import type { ChatMessage, MessageType } from ".";
 import { v4 as uuidv4 } from "uuid";
 import IconDialog from "./iconDialog";
-import { CrownIcon } from "../icon/crownIcon";
-import Moderator from "../icon/moderator";
 
 interface Props {
   inputText: {
@@ -24,11 +21,9 @@ interface Props {
   };
 }
 export default component$<Props>((props) => {
+  const lastEnterTime = useSignal<number>();
   const editorRef = useSignal<HTMLElement>();
   const modalRef = useSignal<HTMLDialogElement>();
-  useVisibleTask$(() => {
-    modalRef.value?.show();
-  });
 
   const onIconClick$ = $(
     (
@@ -52,7 +47,11 @@ export default component$<Props>((props) => {
   );
 
   const onDialogClick = $(() => {
-    modalRef.value?.show();
+    if (modalRef.value?.attributes.getNamedItem("open")) {
+      modalRef.value?.close();
+    } else {
+      modalRef.value?.show();
+    }
   });
 
   const onKeyUp = $(
@@ -60,6 +59,10 @@ export default component$<Props>((props) => {
       // iterate over the children of the element
       // if the child is a text node, then we can just append it to the inputText
       // if the child is an element, then we need to check if it is an image or not
+
+      const ENTER_KEY = "Enter";
+      const ENTER_KEY_HOLD_THRESHOLD = 500; // 毫秒
+      const now = Date.now();
 
       props.inputText.value = [];
       element.childNodes.forEach((child) => {
@@ -81,22 +84,27 @@ export default component$<Props>((props) => {
         }
       });
 
-      if (event.key === "Enter") {
-        console.log(props.inputText.value);
-        props.chatList.value = [
-          ...props.chatList.value,
-          {
-            id: uuidv4(),
-            name: "周大開",
-            color: "text-gray-500",
-            messages: props.inputText.value,
-            icons: [<Moderator />],
-          },
-        ];
-        props.inputText.value = [];
-        if (editorRef.value) {
-          editorRef.value.innerHTML = "";
+      if (event.key === ENTER_KEY && props.inputText.value.length >= 1) {
+        if (
+          lastEnterTime.value &&
+          now - lastEnterTime.value < ENTER_KEY_HOLD_THRESHOLD
+        ) {
+          props.chatList.value = [
+            ...props.chatList.value,
+            {
+              id: uuidv4(),
+              name: "周大開",
+              color: "text-gray-500",
+              messages: props.inputText.value,
+              badges: ["moderator"],
+            },
+          ];
+          props.inputText.value = [];
+          if (editorRef.value) {
+            editorRef.value.innerHTML = "";
+          }
         }
+        lastEnterTime.value = now;
       }
     }
   );
@@ -111,7 +119,7 @@ export default component$<Props>((props) => {
           name: "周大開 (Anonymous) ",
           color: "text-gray-500",
           messages: props.inputText.value,
-          icons: [<Moderator />],
+          badges: ["moderator"],
         },
       ];
       props.inputText.value = [];

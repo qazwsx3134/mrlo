@@ -9,11 +9,21 @@ import { GroupIcon } from "../icon/groupIcon";
 
 import Message from "./message";
 import ChatInput from "./chatInput";
-import { JSX } from "@builder.io/qwik/jsx-runtime";
-import Moderator from "../icon/moderator";
-// import { useLocation } from "@builder.io/qwik-city";
 
-export type MessageType = string | { id: string; url?: string };
+import { BadgeVariant } from "../icon/badge";
+import { EmojiType } from "../icon/emoji";
+
+interface EmojiMessage {
+  id: string;
+  emoji: EmojiType;
+}
+
+interface ImageMessage {
+  id: string;
+  url?: string;
+}
+
+export type MessageType = string | EmojiMessage | ImageMessage;
 
 export type ChatMessage = {
   id?: string;
@@ -21,58 +31,57 @@ export type ChatMessage = {
   messages: MessageType[];
   color?: string;
   time?: string;
-  icons?: JSX.Element[];
+  badges?: BadgeVariant[];
 };
-
-const defaultChatMessage: ChatMessage[] = [
-  {
-    name: "MrLo",
-    color: "text-red-500",
-    messages: [
-      "Hello",
-      {
-        id: uuidv4(),
-        url: `/images/emojis/mrlo/lo-laugh.webp`,
-      },
-    ],
-    icons: [<Moderator />],
-    time: subtractFromNow(3, "minute"),
-  },
-  {
-    name: "MrLo",
-    color: "text-red-500",
-    messages: [
-      "world",
-      {
-        id: uuidv4(),
-        url: `/images/emojis/test/test.gif`,
-      },
-    ],
-    icons: [<Moderator />],
-    time: subtractFromNow(2, "minute"),
-  },
-  {
-    name: "MrLo",
-    color: "text-red-500",
-    messages: [
-      "worldasdasdasdasdasdasdasd",
-      {
-        id: uuidv4(),
-        url: `/images/emojis/test/test.gif`,
-      },
-      {
-        id: uuidv4(),
-        url: `/images/emojis/test/test.gif`,
-      },
-    ],
-    icons: [<Moderator />],
-    time: subtractFromNow(2, "minute"),
-  },
-];
 
 export default component$(() => {
   // const context = useContext(appContext);
-  // const location = useLocation();
+
+  const defaultChatMessage: ChatMessage[] = [
+    {
+      name: "MrLo",
+      color: "text-red-500",
+      messages: [
+        "Hello",
+        {
+          id: uuidv4(),
+          emoji: "loLaugh",
+        },
+      ],
+      badges: ["moderator"],
+      time: subtractFromNow(3, "minute"),
+    },
+    {
+      name: "MrLo",
+      color: "text-red-500",
+      messages: [
+        "world",
+        {
+          id: uuidv4(),
+          emoji: "loLaugh",
+        },
+      ],
+      badges: ["moderator"],
+      time: subtractFromNow(2, "minute"),
+    },
+    {
+      name: "MrLo",
+      color: "text-red-500",
+      messages: [
+        "早上好中國我有冰淇淋",
+        {
+          id: uuidv4(),
+          emoji: "loLaugh",
+        },
+        {
+          id: uuidv4(),
+          emoji: "loLaugh",
+        },
+      ],
+      badges: ["moderator"],
+      time: subtractFromNow(2, "minute"),
+    },
+  ];
 
   const collapsed = useSignal(false);
   const inputText = useStore<{
@@ -130,14 +139,6 @@ export default component$(() => {
             {/* CHAT */}
             <div class="flex flex-col w-full h-full my-2">
               <Message chatMessages={chatList.value} />
-              {/* {inputText.value.map((item) => {
-                console.log(item);
-                if (typeof item === "string") {
-                  return item;
-                } else {
-                  return <img src={item.url} alt="" class="h-8 w-8" />;
-                }
-              })} */}
             </div>
           </section>
           {/* INPUT CONTAINER*/}

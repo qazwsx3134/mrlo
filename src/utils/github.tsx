@@ -7,9 +7,9 @@ export const isGithub = (url: string) => {
 export const transformUrl =
   (subPath: string) => (currentOrigin: string, imgUrl: string) => {
     if (isGithub(currentOrigin)) {
-      return `${subPath}${imgUrl}`;
+      return `/${subPath}${imgUrl}`;
     }
     return imgUrl;
   };
 
-export const transformToMrlo = transformUrl("mrlo/");
+export const transformToMrlo = transformUrl("mrlo");

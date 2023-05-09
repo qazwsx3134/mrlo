@@ -3,9 +3,21 @@ import {
   component$,
   type Signal,
   useOnDocument,
-  PropFunction,
-  QwikMouseEvent,
+  type PropFunction,
+  type QwikMouseEvent,
 } from "@builder.io/qwik";
+import Emoji, { type EmojiType } from "../icon/emoji";
+import { v4 as uuidv4 } from "uuid";
+
+const emojiList: {
+  name: string;
+  emojis: EmojiType[];
+}[] = [
+  {
+    name: "MrLo",
+    emojis: ["loLaugh", "vanish", "swingHead"],
+  },
+];
 
 interface Props {
   modalRef: Signal<HTMLDialogElement | undefined>;
@@ -38,30 +50,35 @@ export default component$<Props>((props) => {
   return (
     <dialog
       ref={modalRef}
-      class="absolute bottom-[88px] right-0 h-[350px] shadow-md shadow-gray-400 focus:outline-none rounded-md bg-gWhite py-2 px-2"
+      class="absolute bottom-[88px] right-0 h-[350px] shadow-md shadow-gray-400 focus:outline-none rounded-md bg-gWhite py-1 px-1"
       style={{
         width: "calc(100% - 4px)",
       }}
     >
-      <div class="m-1">
+      <div class="m-1 bg-white">
         <div>
-          <div class="bg-gray-200 py-2 px-1 text-sm font-medium">MrLo</div>
-          <div class="flex">
-            <div class="px-[2px] hover:bg-buttonHover rounded-lg focus:outline-none">
-              <div class="h-10 w-10 inline-flex justify-center items-center">
-                <button
-                  class="focus:outline-none"
-                  onClick$={props.onIconClick$}
-                >
-                  <img
-                    src="https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_18703539b9244118a177638fdb8630b0/default/light/1.0"
-                    alt=""
-                    class="h-7 w-7"
-                  />
-                </button>
+          {emojiList.map((customer) => (
+            <>
+              <div class="py-2 px-1 text-sm font-medium">{customer.name}</div>
+              <div class="flex">
+                {customer.emojis.map((emoji) => (
+                  <div
+                    key={uuidv4()}
+                    class="hover:bg-buttonHover rounded-lg focus:outline-none"
+                  >
+                    <div class="h-10 w-10 inline-flex justify-center items-center">
+                      <button
+                        class="focus:outline-none"
+                        onClick$={props.onIconClick$}
+                      >
+                        <Emoji emoji={emoji} class="h-7 w-7" />
+                      </button>
+                    </div>
+                  </div>
+                ))}
               </div>
-            </div>
-          </div>
+            </>
+          ))}
         </div>
       </div>
     </dialog>

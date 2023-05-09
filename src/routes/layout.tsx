@@ -36,15 +36,21 @@ export default component$(() => {
     const imgLoad = imagesLoaded("#main", { background: true });
     imgLoad.on("done", () => {
       onDone.value = true;
-    });
+    })
+    imgLoad.on("fail", () => {
+      onDone.value = true;
+    })
+    // imgLoad.on("progress", (instance, image) => {
+    //   onDone.value = false;
+    // })
   });
 
   return (
     <>
       <main id="main" class="flex flex-col h-full min-h-screen">
-        {/* <SquareBGLoader onDone={onDone}>
+        <SquareBGLoader onDone={onDone}>
           <MrloHello q:slot="icon" onDone={onDone} />
-        </SquareBGLoader> */}
+        </SquareBGLoader>
         <Header />
         <div
           class="fixed top-12 w-full flex flex-row justify-between"

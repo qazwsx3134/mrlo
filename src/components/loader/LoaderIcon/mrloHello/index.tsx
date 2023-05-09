@@ -1,12 +1,14 @@
 import {
   component$,
-  NoSerialize,
+  type NoSerialize,
   noSerialize,
   useStore,
   useVisibleTask$,
   type Signal,
 } from "@builder.io/qwik";
+import { useLocation } from "@builder.io/qwik-city";
 import gsap from "gsap";
+import { transformToMrlo } from "~/utils/github";
 // import GSDevTools from "~/hooks/useGSDevTools";
 
 interface Props {
@@ -14,6 +16,7 @@ interface Props {
 }
 
 export default component$<Props>((props) => {
+  const location = useLocation();
   const timeLineStore = useStore<{ timeLine: NoSerialize<gsap.core.Timeline> }>(
     {
       timeLine: undefined,
@@ -65,9 +68,15 @@ export default component$<Props>((props) => {
       timeLineStore.timeLine?.revert();
     }
   });
+
   return (
     <div class="flex">
-      <img id="loaderMrlo" src="/images/loader/hello.png" alt="MrLo" class="" />
+      <img
+        id="loaderMrlo"
+        src={transformToMrlo(location.url.origin, "/images/loader/hello.png")}
+        alt="MrLo"
+        class=""
+      />
     </div>
   );
 });
