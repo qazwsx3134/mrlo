@@ -21,7 +21,6 @@ interface Props {
   };
 }
 export default component$<Props>((props) => {
-  const lastEnterTime = useSignal<number>();
   const editorRef = useSignal<HTMLElement>();
   const modalRef = useSignal<HTMLDialogElement>();
 
@@ -61,8 +60,6 @@ export default component$<Props>((props) => {
       // if the child is an element, then we need to check if it is an image or not
 
       const ENTER_KEY = "Enter";
-      const ENTER_KEY_HOLD_THRESHOLD = 500; // 毫秒
-      const now = Date.now();
 
       props.inputText.value = [];
       element.childNodes.forEach((child) => {
@@ -85,26 +82,20 @@ export default component$<Props>((props) => {
       });
 
       if (event.key === ENTER_KEY && props.inputText.value.length >= 1) {
-        if (
-          lastEnterTime.value &&
-          now - lastEnterTime.value < ENTER_KEY_HOLD_THRESHOLD
-        ) {
-          props.chatList.value = [
-            ...props.chatList.value,
-            {
-              id: uuidv4(),
-              name: "周大開",
-              color: "text-gray-500",
-              messages: props.inputText.value,
-              badges: ["moderator"],
-            },
-          ];
-          props.inputText.value = [];
-          if (editorRef.value) {
-            editorRef.value.innerHTML = "";
-          }
+        props.chatList.value = [
+          ...props.chatList.value,
+          {
+            id: uuidv4(),
+            name: "周大開",
+            color: "text-gray-500",
+            messages: props.inputText.value,
+            badges: ["moderator"],
+          },
+        ];
+        props.inputText.value = [];
+        if (editorRef.value) {
+          editorRef.value.innerHTML = "";
         }
-        lastEnterTime.value = now;
       }
     }
   );

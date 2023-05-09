@@ -9,7 +9,9 @@
 2. qwik 的 props 裡面不能有 function(因為不能 serializable)也就是不能傳一個 component, JSX Element 在裡面
    思考用 Slot 的方式 或是 用一個 component 裡面有 switch 控制要 render 甚麼 component
 
-3. 要想多個 span 裡面有 text 又有 img 要怎麼像 twitch 那樣換行
+3. input 裡面 enter 有時候無效 刪減的時候也是 img 要+span?
+
+4. route 的切換
 
 ## Qwik Notice
 
