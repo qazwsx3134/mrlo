@@ -1,0 +1,1 @@
+import{n as e,x as r}from"./q-6e9cf0ab.js";import{e as o,a as n}from"./q-5166e0e9.js";import{t as s}from"./q-34822fe3.js";import{j as c}from"./q-84c8faab.js";const u=t=>{const i=c(),m=e(t,["emoji"]),a=o[t.emoji].startsWith("/mrlo")?s(i.url.origin,`${n}${o[t.emoji]}`):o[t.emoji];return r("img",{...m,key:t==null?void 0:t.key,src:a})};export{u as s_qgtPW3dQ4Mc};

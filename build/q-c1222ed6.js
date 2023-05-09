@@ -1,1 +1,0 @@
-import{p as t,z as o,_ as a,w as s,N as _}from"./q-6dcc0380.js";const e=t(o(()=>a(()=>import("./q-16b97c08.js"),["build/q-16b97c08.js","build/q-6dcc0380.js"]),"s_9gV1yuUkB6k")),i=r=>{switch(s(),r.variant){case"moderator":return _(e,null,3,"0y_0");default:return null}};export{i as s_zQpOYlJkb0s};
