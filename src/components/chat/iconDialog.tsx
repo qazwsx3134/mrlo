@@ -11,10 +11,13 @@ import { v4 as uuidv4 } from "uuid";
 
 const emojiList: {
   name: string;
+  avatar: string;
   emojis: EmojiType[];
 }[] = [
   {
     name: "MrLo",
+    avatar:
+      "https://static-cdn.jtvnw.net/jtv_user_pictures/f201e2b1-6afb-4efb-ae5a-a38e8b8860e8-profile_image-28x28.png",
     emojis: ["loLaugh", "vanish", "swingHead"],
   },
 ];
