@@ -78,20 +78,28 @@ export default component$<Props>((props) => {
               url: child.src,
             },
           ];
+        } else if (child instanceof HTMLDivElement) {
+          props.inputText.value = [
+            ...props.inputText.value,
+            child.textContent ?? "",
+          ];
         }
       });
 
-      if (event.key === ENTER_KEY && props.inputText.value.length >= 1) {
-        props.chatList.value = [
-          ...props.chatList.value,
-          {
-            id: uuidv4(),
-            name: "周大開",
-            color: "text-gray-500",
-            messages: props.inputText.value,
-            badges: ["moderator"],
-          },
-        ];
+      if (event.key === ENTER_KEY) {
+        if (props.inputText.value.filter((text) => text !== "").length >= 1) {
+          props.chatList.value = [
+            ...props.chatList.value,
+            {
+              id: uuidv4(),
+              name: "周大開 (Anonymous) ",
+              color: "text-gray-500",
+              messages: props.inputText.value,
+              badges: ["moderator"],
+            },
+          ];
+        }
+
         props.inputText.value = [];
         if (editorRef.value) {
           editorRef.value.innerHTML = "";

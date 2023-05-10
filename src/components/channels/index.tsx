@@ -16,7 +16,7 @@ export default component$<Props>((props) => {
       game: "特別節目",
       online: true,
       viewers: 900,
-      streamUrl: "https://www.twitch.tv/harnaisxsumire",
+      streamUrl: "/works/test",
     },
     {
       iconUrl:
@@ -25,7 +25,7 @@ export default component$<Props>((props) => {
       game: "特別節目",
       online: false,
       viewers: 90000,
-      streamUrl: "https://www.twitch.tv/harnaisxsumire",
+      streamUrl: "/works/test",
     },
     {
       iconUrl:
@@ -34,7 +34,7 @@ export default component$<Props>((props) => {
       game: "特別節目",
       online: true,
       viewers: 9000,
-      streamUrl: "https://www.twitch.tv/harnaisxsumire",
+      streamUrl: "/works/test",
     },
     {
       iconUrl:
@@ -43,7 +43,7 @@ export default component$<Props>((props) => {
       game: "特別節目",
       online: true,
       viewers: 900,
-      streamUrl: "https://www.twitch.tv/harnaisxsumire",
+      streamUrl: "/works/test",
     },
     {
       iconUrl:
@@ -52,7 +52,7 @@ export default component$<Props>((props) => {
       game: "特別節目",
       online: false,
       viewers: 90000,
-      streamUrl: "https://www.twitch.tv/harnaisxsumire",
+      streamUrl: "/works/test",
     },
     {
       iconUrl:
@@ -61,7 +61,7 @@ export default component$<Props>((props) => {
       game: "特別節目",
       online: true,
       viewers: 9000,
-      streamUrl: "https://www.twitch.tv/harnaisxsumire",
+      streamUrl: "/works/test",
     },
     {
       iconUrl:
@@ -70,7 +70,7 @@ export default component$<Props>((props) => {
       game: "特別節目",
       online: true,
       viewers: 900,
-      streamUrl: "https://www.twitch.tv/harnaisxsumire",
+      streamUrl: "/works/test",
     },
     {
       iconUrl:
@@ -79,7 +79,7 @@ export default component$<Props>((props) => {
       game: "特別節目",
       online: false,
       viewers: 90000,
-      streamUrl: "https://www.twitch.tv/harnaisxsumire",
+      streamUrl: "/works/test",
     },
     {
       iconUrl:
@@ -88,7 +88,7 @@ export default component$<Props>((props) => {
       game: "特別節目",
       online: true,
       viewers: 9000,
-      streamUrl: "https://www.twitch.tv/harnaisxsumire",
+      streamUrl: "/works/test",
     },
     {
       iconUrl:
@@ -97,7 +97,7 @@ export default component$<Props>((props) => {
       game: "特別節目",
       online: true,
       viewers: 900,
-      streamUrl: "https://www.twitch.tv/harnaisxsumire",
+      streamUrl: "/works/test",
     },
     {
       iconUrl:
@@ -106,7 +106,7 @@ export default component$<Props>((props) => {
       game: "特別節目",
       online: false,
       viewers: 90000,
-      streamUrl: "https://www.twitch.tv/harnaisxsumire",
+      streamUrl: "/works/test",
     },
     {
       iconUrl:
@@ -115,7 +115,7 @@ export default component$<Props>((props) => {
       game: "特別節目",
       online: true,
       viewers: 9000,
-      streamUrl: "https://www.twitch.tv/harnaisxsumire",
+      streamUrl: "/works/test",
     },
   ];
   return (

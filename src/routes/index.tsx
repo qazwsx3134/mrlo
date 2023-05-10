@@ -10,11 +10,11 @@ export default component$(() => {
   return (
     <div class="relative flex flex-col grow bg-lightGray">
       <div class="w-full h-[2000px] overflow-auto noScrollContainer">
-        <div class="h-[400px] bg-red-200">a</div>
-        <div class="h-[400px] bg-blue-200">b</div>
-        <div class="h-[400px] bg-green-200">c</div>
-        <div class="h-[400px] bg-yellow-200">d</div>
-        <div class="h-[400px] bg-gray-200">e</div>
+        <div class="h-screen bg-red-200">a</div>
+        <div class="h-screen bg-blue-200">b</div>
+        <div class="h-screen bg-green-200">c</div>
+        <div class="h-screen bg-yellow-200">d</div>
+        <div class="h-screen bg-gray-200">e</div>
       </div>
       <InfoFooter />
     </div>

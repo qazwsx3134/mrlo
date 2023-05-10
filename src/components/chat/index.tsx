@@ -1,4 +1,4 @@
-import { component$, useSignal, $, useStore } from "@builder.io/qwik";
+import { component$, useSignal, $, useStore, useTask$ } from "@builder.io/qwik";
 import { v4 as uuidv4 } from "uuid";
 
 // import { appContext } from "~/routes/layout";
@@ -10,8 +10,9 @@ import { GroupIcon } from "../icon/groupIcon";
 import Message from "./message";
 import ChatInput from "./chatInput";
 
-import { BadgeVariant } from "../icon/badge";
-import { EmojiType } from "../icon/emoji";
+import type { BadgeVariant } from "../icon/badge";
+import type { EmojiType } from "../icon/emoji";
+import { isServer } from "@builder.io/qwik/build";
 
 interface EmojiMessage {
   id: string;
@@ -36,6 +37,7 @@ export type ChatMessage = {
 
 export default component$(() => {
   // const context = useContext(appContext);
+  const chatRef = useSignal<HTMLElement>();
 
   const defaultChatMessage: ChatMessage[] = [
     {
@@ -100,8 +102,29 @@ export default component$(() => {
     { deep: true }
   );
 
-  const toggleCollapsed = $(() => {
+  const toggleCollapsed = $(async () => {
     collapsed.value = !collapsed.value;
+  });
+
+  useTask$(({ track }) => {
+    track(() => chatList.value);
+
+    if (isServer) {
+      return;
+    }
+
+    const scroller = setTimeout(() => {
+      if (chatRef.value) {
+        chatRef.value.scrollTo({
+          top: chatRef.value.scrollHeight,
+          behavior: "smooth",
+        });
+      }
+    }, 50);
+
+    return () => {
+      clearTimeout(scroller);
+    };
   });
 
   return (
@@ -135,6 +158,7 @@ export default component$(() => {
             style={{
               height: "calc(100vh - 185px)",
             }}
+            ref={chatRef}
           >
             {/* CHAT */}
             <div class="flex flex-col w-full h-full my-2">
