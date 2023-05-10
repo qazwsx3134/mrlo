@@ -106,7 +106,7 @@ export default component$(() => {
     collapsed.value = !collapsed.value;
   });
 
-  useTask$(({ track }) => {
+  useTask$(({ track, cleanup }) => {
     track(() => chatList.value);
 
     if (isServer) {
@@ -122,9 +122,9 @@ export default component$(() => {
       }
     }, 50);
 
-    return () => {
+    cleanup(() => {
       clearTimeout(scroller);
-    };
+    });
   });
 
   return (
