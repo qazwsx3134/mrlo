@@ -33,15 +33,12 @@ export default component$(() => {
       ScrollTrigger.create({
         trigger: panel as gsap.DOMTarget,
         start: "top top",
-        end: "+=900",
         pin: true,
+        pinSpacing: false,
       });
     });
 
-    const cc = gsap.to("#p1", {
-      x: 900,
-      rotation: 360,
-      duration: 8,
+    const tl = gsap.timeline({
       scrollTrigger: {
         trigger: "#p1",
         start: "top 80%",
@@ -54,9 +51,15 @@ export default component$(() => {
       },
     });
 
+    tl.to("#p1", {
+      x: 900,
+      rotation: 360,
+      duration: 1,
+    });
+
     devtools.create({
       id: "section1Timeline",
-      animation: cc,
+      animation: tl,
     });
   });
   return (
