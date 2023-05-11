@@ -45,28 +45,24 @@ export default component$(() => {
       scroller: containerRef.value,
     });
 
-    // const panels = gsap.utils.toArray(".panel");
+    const panels = gsap.utils.toArray(".panel");
 
-    // panels.forEach((panel) => {
-    //   scrollTrigger.create({
-    //     trigger: panel as gsap.DOMTarget,
-    //     start: "top top",
-    //     pin: true,
-    //     pinSpacing: false,
-    //     invalidateOnRefresh: true,
-    //   });
-    // });
+    panels.forEach((panel) => {
+      scrollTrigger.create({
+        trigger: panel as gsap.DOMTarget,
+        start: "top top",
+        end: "+=3000",
+        pin: true,
+        pinSpacing: false,
+        invalidateOnRefresh: true,
+      });
+    });
 
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: "#p1",
         start: "top 80%",
         end: "top 20%",
-        markers: {
-          startColor: "green",
-          endColor: "red",
-          fontSize: "14px",
-        },
       },
     });
 
@@ -93,18 +89,18 @@ export default component$(() => {
       <div
         id="container"
         ref={containerRef}
-        class="w-full h-[2000px] overflow-auto noScrollContainer"
+        class="w-full h-[50000px] overflow-auto noScrollContainer"
       >
-        <div id="section1" class="bg-black panel h-[1500px]">
+        <div id="section1" class="bg-black panel h-[3000px]">
           <XaSection1 />
         </div>
-        <div id="section2" class="h-screen bg-blue-200 panel">
+        <div id="section2" class="h-[3000px] bg-blue-200 panel">
           <img src="/images/work/1/1.webp" alt="" class="h-48" id="p1" />
         </div>
 
-        <div class="h-screen bg-green-200 panel">c</div>
-        <div class="h-screen bg-yellow-200 panel">d</div>
-        <div class="h-screen bg-gray-200 panel">e</div>
+        <div class="h-[1500px] bg-green-200 panel">c</div>
+        <div class="h-[1500px] bg-yellow-200 panel">d</div>
+        <div class="h-[1500px] bg-gray-200 panel">e</div>
       </div>
       <InfoFooter />
     </div>
