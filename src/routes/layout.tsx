@@ -53,13 +53,14 @@ export default component$(() => {
         </SquareBGLoader> */}
         <Header />
         <div
+          id="mainContainer"
           class="fixed top-12 w-full flex flex-row justify-between"
           style={{
             height: "calc(100vh - 48px)",
           }}
         >
           {/* left */}
-          <div class="flex basis-[60px]">
+          <div id="sideNavContainer" class="flex basis-[60px]">
             <SideNav />
           </div>
           {/* middle */}
@@ -68,7 +69,10 @@ export default component$(() => {
           </div>
 
           {/* right */}
-          <div class="flex basis-0 relative bg-white h-full">
+          <div
+            id="chatContainer"
+            class="flex basis-50 relative bg-white h-full"
+          >
             <Chat />
           </div>
         </div>

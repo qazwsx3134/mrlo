@@ -130,11 +130,13 @@ export default component$(() => {
   return (
     <>
       {collapsed.value ? (
-        <div
-          class="absolute right-2 top-3 w-8 h-8 flex items-center justify-center text-sm  cursor-pointer hover:bg-buttonHover rounded-md"
-          onClick$={toggleCollapsed}
-        >
-          <ArrowLeftLine class="text-lg text-white" />
+        <div class="relative flex">
+          <div
+            class="absolute right-2 top-3 w-8 h-8 flex items-center justify-center text-sm  cursor-pointer hover:bg-buttonHover rounded-md"
+            onClick$={toggleCollapsed}
+          >
+            <ArrowLeftLine class="text-lg text-white" />
+          </div>
         </div>
       ) : (
         <aside class="relative flex flex-col min-h-screen min-w-[340px] w-full grow border-l border-gray-200 ">
