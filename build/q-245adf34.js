@@ -1,0 +1,1 @@
+import{k as t,b as a,_ as o,f as s,a as _}from"./q-cba58d2c.js";const e=t(a(()=>o(()=>import("./q-e02b2558.js"),["build/q-e02b2558.js","build/q-cba58d2c.js"]),"s_9gV1yuUkB6k")),i=r=>{switch(s(),r.variant){case"moderator":return _(e,null,3,"0y_0");default:return null}};export{i as s_zQpOYlJkb0s};

@@ -1,0 +1,1 @@
+import{a as n,N as t,d as r}from"./q-cba58d2c.js";const e=l=>{const a=(l==null?void 0:l.color)==="white"?"text-white":"";return n(r,{children:[t("i",{class:`fas fa-arrow-left ${a}`},null,null,3,null),t("i",{class:`fas fa-slash rotate-[52deg] -ml-1 ${a}`},null,null,3,null)]},1,"g0_0")};export{e as s_Y06nkxHFI9w};
