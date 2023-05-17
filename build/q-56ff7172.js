@@ -1,0 +1,1 @@
+import{U as a}from"./q-cba58d2c.js";const r=async()=>{function e(){return new Promise((o,n)=>{if(globalThis.confetti)return o(globalThis.confetti);const t=document.createElement("script");t.src="",t.onload=()=>o(globalThis.confetti),t.onerror=n,document.head.appendChild(t),t.remove()})}await e()};export{a as _hW,r as s_gbTR5s532g0};
